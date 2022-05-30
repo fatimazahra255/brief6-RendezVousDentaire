@@ -1,0 +1,84 @@
+.history {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.history .create {
+  text-transform: capitalize;
+  text-align: left;
+  font-size: 1.4rem;
+}
+
+.history .list {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .history .list {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.history .list .card {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.history .list .card .controls {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 1.4rem;
+}
+
+.history .list .card .controls a {
+  opacity: .7;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.history .list .card .controls a:hover {
+  opacity: 1;
+}
+
+.history .list .card .section {
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.history .list .card .section .label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.history .list .card .section .value {
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=history.css.map */
