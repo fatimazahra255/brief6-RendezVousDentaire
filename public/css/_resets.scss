@@ -13,10 +13,15 @@ html {
 body {
     font-size: 1.6rem;
     color: black;
+    font-family: 'Inter', sans-serif;
 
     @include tablet {
         width: 60%;
         margin: 0 auto;
+    }
+
+    @include desktop {
+        width: 45%;
     }
 
 }
