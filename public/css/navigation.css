@@ -1,0 +1,33 @@
+.nav {
+  padding: 1rem;
+}
+
+.nav .intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nav .intro .welcome {
+  font-weight: bold;
+}
+
+.nav .intro .welcome span {
+  font-weight: 400;
+}
+
+.nav .intro .logout {
+  color: black;
+  padding: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=navigation.css.map */

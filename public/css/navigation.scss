@@ -1,0 +1,26 @@
+.nav {
+    padding: 1rem;
+
+    .intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .welcome {
+            font-weight: bold;
+
+            span {
+                font-weight: 400;
+            }
+        }
+
+        .logout {
+            color: black;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid black;
+            text-transform: capitalize;
+        }
+    }
+}

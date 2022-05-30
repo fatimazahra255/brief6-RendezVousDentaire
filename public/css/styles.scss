@@ -1,0 +1,32 @@
+@import "./resets";
+@import "./abstracts/";
+
+.container
+{
+    display: flex;  
+    align-items: center;   
+    justify-content:space-around; 
+    box-shadow: 1px 1px 10px 1px #3688bf;
+    max-width: 100%;
+
+    .container_items
+    {
+        display: flex;
+        align-items: center;
+        background-color: red;
+       ul
+       {
+        list-style: none;
+        gap: 100px;
+        color: #5DADEA;
+        
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #5DADEA;
+            // font-weight: 800;
+         }
+       }
+    }
+}

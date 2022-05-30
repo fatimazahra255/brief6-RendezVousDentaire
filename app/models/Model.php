@@ -35,9 +35,8 @@ class Model
         }, $keys);
 
         $placeholders = implode(",", $modifiedKeys); // :username,:password
-
         $statment = $this->connection->prepare("insert into $this->tableName  ($columns) values ($placeholders)");
-        return $statment->execute($data) ? $this->lastInsertedId() : false; // terinary operator
+        return  $statment->execute($data) ? $this->lastInsertedId() : false; // terinary operator
     }
 
     private function lastInsertedId()
@@ -54,7 +53,7 @@ class Model
         $statement = $this->connection->prepare("UPDATE $this->tableName SET $updatedColumns WHERE $mainColumn=:$mainColumn");
         return $statement->execute([...$data, $mainColumn => $val]);
     }
-    public function updateByID($data, $id)
+    public function updateById($id, $data)
     {
         return $this->update($data, "id", $id);
     }
@@ -69,21 +68,33 @@ class Model
 
 
 
-    public function delete($id)
+    public function delete($filter, $data = [])
     {
-        $statement = $this->connection->prepare("DELETE FROM $this->tableName WHERE id=:id ");
-        return $statement->execute(["id" => $id]);
+        $statement = $this->connection->prepare("DELETE FROM $this->tableName $filter ");
+        return $statement->execute($data);
     }
-    //  fetchById return tableau assiciative
-    public function fetchById($id)
+
+    public function deleteById($id)
     {
-        return $this->fetchOne("where id =:id", ["id" => $id]);
+        return $this->delete("where id = :id", ["id" => $id]);
     }
+
+
+    public function fetchByReference($reference)
+    {
+        return $this->fetchOne("where reference =:ref", ["ref" => $reference]);
+    }
+
+
     public function fetchOne($filtre = "", $data = [])
     {
         $statment = $this->connection->prepare("select * from $this->tableName $filtre");
         $statment->execute($data);
-        // echo '<pre>', var_dump($data), 'Hi', '</pre>' ;
         return $statment->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function fetchById($id)
+    {
+        return $this->fetchOne("where id =:id", ["id" => $id]);
     }
 }

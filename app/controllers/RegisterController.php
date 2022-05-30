@@ -11,24 +11,20 @@ class RegisterController
     public function index()
     {
 
-        if (isPostRequest())
-        {
+        if (isPostRequest()) {
             $reference = generateRandomString();
             $data = ["reference" => $reference, ...$_POST];
-            
-            $patient = $this->patientModel->create($data);
-            if ($patient) {
+
+            $isCreated = $this->patientModel->create($data);
+            if ($isCreated !== false) {
                 return view("register", ["ref" => $reference]);
             }
-        } 
-        else
-        {
+        } else {
             return view("register");
         }
-    }
 
+        view("register");
+    }
 }
 
         // ??????????????????????????????????????????????????????????????????????????
-
-       

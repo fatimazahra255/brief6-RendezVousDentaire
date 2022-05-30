@@ -2,14 +2,14 @@
 
 class LogoutController
 {
+    public function __construct()
+    {
+        Middleware::assign($this, ["index"], "auth");
+    }
 
     public function index()
     {
-        if (isLoggedIn()) {
-            session_destroy();
-            $_SESSION = null;
-        }
-        return redirect("home");
-        view("Rendezvous");
+        logout();
+        return redirect("/login");
     }
 }

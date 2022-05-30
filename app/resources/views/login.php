@@ -27,6 +27,10 @@
                             <button name="submit" class="btn btn-success btn-block mx-5 mt-4">submit</button>
                         </div>
                     </div>
+                    <div class="form-group">
+                       <h4> Vous n'avez pas de compte ? </h4>
+                       <a href="<?=  createLink("Register")?>"> créer un compte</a>
+                    </div>
                 </form>
             </div>
         </div>

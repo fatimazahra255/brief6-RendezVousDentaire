@@ -1,6 +1,7 @@
 <?php
 
-class  LoginController {
+class  LoginController
+{
 
     private $patientsModel;
 
@@ -14,20 +15,18 @@ class  LoginController {
     {
 
 
-        if (isPostRequest() && verify(["reference"], $_POST))  {     
+        if (isPostRequest() && verify(["reference"], $_POST)) {
             $ref = $_POST["reference"];
             $patient = $this->patientsModel->fetchByReference($ref);
 
             if (!$patient) {
                 return view("login");
-            } else {
-                view("Rendezvous");
-                return;
             }
+
+            createPatientSession($patient);
+            return redirect("/");
         }
 
         return view("login");
     }
-
 }
-

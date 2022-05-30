@@ -1,5 +1,5 @@
 <?php
-class Rendezvous extends Model{
+class Rdv extends Model{
     protected $tableName=  "rendezvous";
 
 }

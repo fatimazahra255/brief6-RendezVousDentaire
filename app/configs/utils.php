@@ -1,5 +1,6 @@
 <?php
 
+use Jenssegers\Blade\Blade;
 
 /**
  * retour fichier view  
@@ -14,8 +15,25 @@ function view($path, $data = [])
     include dirname(__DIR__) . "/resources/views/$path.php";
 }
 
+function bladeView($path, $data = [])
+{
+    $views = dirname(__DIR__) . "/resources/views";
+    $cache = dirname(__DIR__) . "/cache/views";
 
-function component($path, $data= []){
+    $blade = new Blade($views, $cache);
+
+    echo $blade->render($path, $data);
+}
+
+function json($data = [])
+{
+    header("Content-Type: application/json");
+    echo json_encode($data);
+}
+
+
+function component($path, $data = [])
+{
     view("/components/$path", $data);
 }
 
@@ -26,7 +44,7 @@ function component($path, $data= []){
  */
 function isPostRequest()
 {
-    return $_SERVER["REQUEST_METHOD"] === "POST";
+    return $_SERVER["REQUEST_METHOD"] == "POST";
 }
 
 
@@ -65,30 +83,26 @@ function isLoggedIn()
 }
 
 
+function logout(){
+    isLoggedIn();
+    session_destroy();
+}
 
-// /**
-//  * vérifier si l'utilisateur actuel est un administrateur
-//  * @return [type]
-//  */
-// function isAdmin()
-// {
-//     return currentUserRole() === ADMIN;
-// }
-// function isClient()
-// {
-//     return currentUserRole() === CLIENT;
 
-// }
+
+
+
 
 
 // /**
 //  * obtenir le rôle de l'utilisateur actuel
 //  * @return [type]
 //  */
-// function currentUserRole(){
-//     if(!isLoggedIn()) return null;
-//     return $_SESSION["role"];
-// }
+function currentUserRole()
+{
+    if (!isLoggedIn()) return null;
+    return $_SESSION["role"];
+}
 
 
 /**
@@ -109,6 +123,12 @@ function createPatientSession($patient)
         session_start();
     }
     $_SESSION[MAIN_PATIENT_KEY] = $patient[MAIN_PATIENT_KEY];
+    $_SESSION["currentPatient"] = $patient;
+}
+
+function currentPatient(){
+    if(!isLoggedIn()) return null;
+    return $_SESSION["currentPatient"];
 }
 
 
@@ -125,7 +145,7 @@ function createPatientSession($patient)
 function redirect($path)
 {
     $path = trim($path, "/");
-    header("location: /".PROJECT_NAME."/$path");
+    header("location: /" . PROJECT_NAME . "/$path");
 }
 
 
@@ -135,7 +155,8 @@ function redirect($path)
  * 
  * @return [type]
  */
-function generateRandomString($length = 10) {
+function generateRandomString($length = 10)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -156,5 +177,5 @@ function generateRandomString($length = 10) {
 function createLink($path)
 {
     $path = trim($path, "/");
-    return "/".PROJECT_NAME."/$path";
+    return "/" . PROJECT_NAME . "/$path";
 }
