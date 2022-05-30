@@ -1,6 +1,6 @@
 @component('components.layout', ['title' => 'create form'])
     @push('styles')
-        <link rel="stylesheet" href="create.css">
+        <link rel="stylesheet" href="css/create.css">
     @endpush
 
     @php
@@ -10,28 +10,39 @@
     @endphp
 
     <div class="create">
-        <form method="POST">
+        <a href="{{ createLink('/history') }}" class="history">mes rendez vous</a>
+        <form method="POST" class="form">
             @if ($error !== null)
-                <p>{{ $error }}</p>
+                <p class="error">{{ $error }}</p>
             @endif
-            <input type="date" value="{{ $tomorrow }}" name="date" min="{{ $tomorrow }}" id="date">
-            <select name="creneau" id="creneau">
-                <option value="" selected disabled>please select a slot</option>
-                @foreach ($creneauList as $index => $creneau)
-                    @if (!isset($usedSlots[$index]))
-                        <option value="{{ $index }}">{{ $creneau }}</option>
-                    @endif
-                @endforeach
-            </select>
+            <label class="input">
+                <span class="label">Choose a date</span>
+                <input type="date" value="{{ $tomorrow }}" name="date" min="{{ $tomorrow }}" id="date">
+            </label>
 
-            <select name="sujet" id="sujet">
-                @foreach ($subjects as $subject)
-                    <option value="{{ $subject }}">{{ $subject }}</option>
-                @endforeach
-            </select>
+            <label class="input">
+                <span class="label">choose a slot</span>
+                <select name="creneau" id="creneau">
+                    <option value="" selected disabled>please select a slot</option>
+                    @foreach ($creneauList as $index => $creneau)
+                        @if (!isset($usedSlots[$index]))
+                            <option value="{{ $index }}">{{ $creneau }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </label>
+
+            <label class="input"><span class="label">What is this about?</span>
+                <select name="sujet" id="sujet">
+                    @foreach ($subjects as $subject)
+                        <option value="{{ $subject }}">{{ $subject }}</option>
+                    @endforeach
+                </select>
+            </label>
             <button type="submit">create</button>
+        </form>
     </div>
-    </div>
+
     <script>
         const creneauList = JSON.parse('@php echo json_encode($creneauList) @endphp');
         const creneauSelect = document.querySelector("#creneau");

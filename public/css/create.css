@@ -1,0 +1,89 @@
+.create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
+}
+
+.create .history {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: black;
+  text-align: right;
+}
+
+.create .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+}
+
+.create .form .error {
+  color: red;
+}
+
+.create .form .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: .5rem;
+}
+
+.create .form .input .label {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+}
+
+.create .form .input input,
+.create .form .input select {
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  background-color: white;
+}
+
+.create .form .input input:focus,
+.create .form .input select:focus {
+  border-color: black;
+  outline: none;
+}
+
+.create .form .input select {
+  text-transform: capitalize;
+}
+
+.create .form button {
+  margin-top: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 1px solid black;
+  text-transform: capitalize;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.create .form button:hover {
+  background-color: black;
+  color: white;
+}
+/*# sourceMappingURL=create.css.map */

@@ -1,5 +1,11 @@
+@import "mixins";
+
 .nav {
     padding: 1rem;
+
+    @include tablet {
+        padding: 2rem 1rem;
+    }
 
     .intro {
         display: flex;
@@ -11,6 +17,7 @@
 
             span {
                 font-weight: 400;
+                text-transform: capitalize;
             }
         }
 

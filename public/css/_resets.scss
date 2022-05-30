@@ -13,10 +13,15 @@ html {
 body {
     font-size: 1.6rem;
     color: black;
+
+    @include tablet {
+        width: 60%;
+        margin: 0 auto;
+    }
+
 }
 
 
 a {
     color: currentColor;
-    text-decoration: none;
 }
