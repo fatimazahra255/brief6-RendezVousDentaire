@@ -5,27 +5,38 @@
     $tomorrow = date('Y-m-d', strtotime('+1 day'));
 
     @endphp
+    @push('styles')
+        <link rel="stylesheet" href="css/create.css">
+    @endpush
 
     <div class="create">
-        <form method="POST">
-            <input type="date" value="{{ $date }}" name="date" min="{{ $tomorrow }}" id="date">
-            <select name="creneau" id="creneau">
-                <option value="" disabled>please select a slot</option>
-                @foreach ($creneauList as $index => $item)
-                    @if ($creneau === $index || !isset($usedSlots[$index]))
-                        <option value="{{ $index }}" {{ $index === $creneau ? 'selected' : '' }}>
-                            {{ $item }}</option>
-                    @endif
-                @endforeach
-            </select>
-            <select name="sujet" id="sujet">
-                @foreach ($subjects as $option)
-                    <option value="{{ $option }}" {{ $option === $sujet ? 'selected' : '' }}>
-                        {{ $option }}</option>
-                @endforeach
-            </select>
-            <button>update</button>
-    </div>
+        <form method="POST" class="form">
+            <label class="input"><span class="label">choose a date</span>
+
+                <input type="date" value="{{ $date }}" name="date" min="{{ $tomorrow }}" id="date">
+            </label>
+
+            <label class="input"><span class="label">choose a slot</span>
+                <select name="creneau" id="creneau">
+                    <option value="" disabled>please select a slot</option>
+                    @foreach ($creneauList as $index => $item)
+                        @if ($creneau === $index || !isset($usedSlots[$index]))
+                            <option value="{{ $index }}" {{ $index === $creneau ? 'selected' : '' }}>
+                                {{ $item }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </label>
+            <label class="input"><span class="label">What is this about?</span>
+                <select name="sujet" id="sujet">
+                    @foreach ($subjects as $option)
+                        <option value="{{ $option }}" {{ $option === $sujet ? 'selected' : '' }}>
+                            {{ $option }}</option>
+                    @endforeach
+                </select>
+            </label>
+            <button type="submit">update</button>
+        </form>
     </div>
     <script>
         const creneauList = JSON.parse('@php echo json_encode($creneauList) @endphp');
