@@ -70,7 +70,8 @@
   text-transform: capitalize;
 }
 
-.create .form button {
+.create .form button,
+.create .form .cancel {
   margin-top: 1rem;
   cursor: pointer;
   padding: 1rem;
@@ -83,8 +84,53 @@
   transition: all .2s ease;
 }
 
-.create .form button:hover {
+.create .form button:hover,
+.create .form .cancel:hover {
   background-color: black;
   color: white;
+}
+
+.create .form .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .create .form .btns {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.create .form .btns > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.create .form .btns .cancel {
+  background-color: #ff3333;
+  text-decoration: none;
+  border-color: #ff3333;
+  color: white;
+  font-size: 1.4rem;
+}
+
+.create .form .btns .cancel:hover {
+  background-color: white;
+  color: #ff3333;
 }
 /*# sourceMappingURL=create.css.map */

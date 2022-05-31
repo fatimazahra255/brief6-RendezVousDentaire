@@ -35,7 +35,11 @@
                     @endforeach
                 </select>
             </label>
-            <button type="submit">update</button>
+            <div class="btns">
+                <a href="{{ createLink('/history') }}" class="cancel">cancel</a>
+                <button type="submit">update</button>
+            </div>
+
         </form>
     </div>
     <script>
