@@ -15,7 +15,8 @@ class HomeController
         //  creation de rendez vous
         $error = null;
         if (isPostRequest()) {
-            if (!verify(["date", "sujet", "creneau"], $_POST)) {
+            $isVerified = verify(["date", "sujet", "creneau"], $_POST);
+            if (!$isVerified) {
                 $error = "please fill the required input";
             }
             if (!$error) {

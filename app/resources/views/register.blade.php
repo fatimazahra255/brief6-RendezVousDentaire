@@ -8,24 +8,29 @@
         'nom' => [
             'label' => 'Nom',
             'placeholder' => 'John',
+            'name'=>'nom',
         ],
         'prenom' => [
             'label' => 'prenom',
             'placeholder' => 'Smith',
+            'name'=>'prenom',
         ],
         'email' => [
             'label' => 'email',
             'type' => 'email',
             'placeholder' => 'example@gmail.com',
+            'name'=>'email',
         ],
         'tel' => [
             'label' => 'Num de telephone',
             'type' => 'tel',
             'placeholder' => '095456461331',
+            'name'=>'tel',
         ],
         'ddn' => [
             'label' => 'Date de naissance',
             'type' => 'date',
+            'name'=>'dateN',
         ],
     ];
     @endphp
@@ -45,7 +50,7 @@
             @foreach ($fields as $field)
                 <label class="input">
                     <span class="label">{{ $field['label'] }}</span>
-                    <input type="{{ $field['type'] ?? 'text' }}" placeholder="{{ $field['placeholder'] ?? '' }}">
+                    <input type="{{ $field['type'] ?? 'text' }}" name="{{ $field['name'] }}" placeholder="{{ $field['placeholder'] ?? '' }}">
                 </label>
             @endforeach
             <p class="login">

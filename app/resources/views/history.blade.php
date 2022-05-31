@@ -7,7 +7,7 @@ $today = date('Y-m-d');
 @endpush
 @component('components.layout')
     <div class="history">
-        <a class="create" href="{{ createLink('/create') }}">nouveau rendez vous</a>
+        <a class="create" href="{{ createLink('/') }}">nouveau rendez vous</a>
         <div class="list">
 
             @foreach ($list as $rdv)

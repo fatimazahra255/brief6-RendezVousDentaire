@@ -60,7 +60,7 @@ function isPostRequest()
 function verify($requiredFields, $data): bool
 {
     foreach ($requiredFields as $field) {
-        if (empty($data[$field])) {
+        if (empty($data[$field]) && $data[$field] != "0") {
             return false;
         }
     }
@@ -83,7 +83,8 @@ function isLoggedIn()
 }
 
 
-function logout(){
+function logout()
+{
     isLoggedIn();
     session_destroy();
 }
@@ -100,7 +101,8 @@ function logout(){
 //  */
 function currentUserRole()
 {
-    if (!isLoggedIn()) return null;
+    if (!isLoggedIn())
+        return null;
     return $_SESSION["role"];
 }
 
@@ -126,8 +128,10 @@ function createPatientSession($patient)
     $_SESSION["currentPatient"] = $patient;
 }
 
-function currentPatient(){
-    if(!isLoggedIn()) return null;
+function currentPatient()
+{
+    if (!isLoggedIn())
+        return null;
     return $_SESSION["currentPatient"];
 }
 

@@ -10,7 +10,7 @@
     @endphp
 
     <div class="create">
-        <a href="{{ createLink('/history') }}" class="history">mes rendez vous</a>
+        <a href="{{ createLink('/history    ') }}" class="history">mes rendez vous</a>
         <form method="POST" class="form">
             @if ($error !== null)
                 <p class="error">{{ $error }}</p>
@@ -49,7 +49,7 @@
         const dateInput = document.querySelector("#date");
 
         dateInput.addEventListener("change", (e) => {
-            fetch(`http://localhost/BRIEFAPITEST/rdv/all?date=${e.target.value}`)
+            fetch(`http://localhost/briefDentiste/rdv/all?date=${e.target.value}`)
                 .then(res => res.json())
                 .then(setupCreneau);
         })
