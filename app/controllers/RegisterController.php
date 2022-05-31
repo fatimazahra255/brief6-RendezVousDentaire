@@ -17,13 +17,13 @@ class RegisterController
 
             $isCreated = $this->patientModel->create($data);
             if ($isCreated !== false) {
-                return view("register", ["ref" => $reference]);
+                return bladeView("register", ["ref" => $reference]);
             }
         } else {
-            return view("register");
+            return bladeView("register");
         }
 
-        view("register");
+        bladeView("register");
     }
 }
 

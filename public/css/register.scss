@@ -1,0 +1,99 @@
+@import "mixins";
+
+
+.code {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(black, .2);
+    display: flex;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    text-align: center;
+
+
+    .content {
+        margin-top: 50%;
+        height: fit-content;
+        background-color: white;
+        border: 1px solid black;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @include tablet {
+            margin-top: 30%;
+        }
+
+        @include desktop {
+            margin-top: 15%;
+        }
+
+        a {
+            text-transform: capitalize;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.register {
+    margin-top: 2rem;
+    padding: 1rem;
+
+    h1 {
+        text-align: center;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .input {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            .label {
+                font-weight: bold;
+                font-size: 1.4rem;
+            }
+
+            input {
+                border: 1px solid rgba(black, .5);
+                padding: 1rem;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        .login {
+            margin: 1rem 0;
+            text-align: right;
+            font-size: 1.4rem;
+
+            a {
+                font-weight: bold;
+            }
+        }
+
+        button {
+            cursor: pointer;
+            border: 1px solid black;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: black;
+            color: white;
+
+            &:hover {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}
